@@ -10,9 +10,21 @@ import {
   Dimensions
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
 import LoadingOverlay from '../components/LoadingOverlay';
 import vars from '../vars';
+
+const layoutAnimation = {
+  duration: 500,
+  create: {
+    type: LayoutAnimation.Types.spring,
+    property: LayoutAnimation.Properties.scaleXY,
+  springDamping: 0.7,
+  },
+  update: {
+    type: LayoutAnimation.Types.spring,
+    springDamping: 0.7,
+  },
+};
 
 class LoginScreen extends Component {
   constructor (props) {
@@ -27,18 +39,21 @@ class LoginScreen extends Component {
   }
 
   _open () {
-    LayoutAnimation.easeInEaseOut();
+    LayoutAnimation.configureNext(layoutAnimation);
     this.setState({ isOpen: true });
 
     this._focusUsername();
   }
 
   _close () {
-    LayoutAnimation.easeInEaseOut();
+    LayoutAnimation.configureNext(layoutAnimation);
     this.setState({
       isOpen: false,
       loading: true
     });
+
+    this.refs.usernameInput.blur();
+    this.refs.passwordInput.blur();
 
     setTimeout(() => this.setState({ loading: false }), 3000);
   }
