@@ -1,0 +1,19 @@
+{
+  "name": "ReactThing",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "dependencies": {
+    "react": "15.2.1",
+    "react-native": "0.29.1",
+    "react-native-vector-icons": "^2.0.3"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.1.2",
+    "eslint": "^3.0.1",
+    "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-react": "^5.2.2"
+  }
+}
